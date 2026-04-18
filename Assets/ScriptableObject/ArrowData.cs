@@ -4,5 +4,5 @@ using UnityEngine;
 public class ArrowData : ScriptableObject
 {
     public ArrowDirections.Direction direction;
-    public Vector2Int position;
+    public Vector2Int  position;
 }
