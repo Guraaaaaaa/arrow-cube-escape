@@ -29,7 +29,16 @@ public class Inputmanganer : MonoBehaviour
                 ArrrowController arrow = hit.collider.GetComponent<ArrrowController>();
                 if(arrow != null)
                 {
-                    Debug.Log("Arrow selected: " + arrow.direction);
+                    GridManager grid = arrow.GetComponentInParent<GridManager>();
+                    if (grid != null)
+                    {
+                        bool isClear = grid.IsPathClear(arrow);
+                        Debug.Log($"[Test] Bạn vừa click mũi tên {arrow.name} (Hướng: {arrow.direction}). Path thông thoáng? -> {isClear}");
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Không tìm thấy GridManager ở object cha của mũi tên! Hãy gắn GridManager vào object chứa các mũi tên.");
+                    }
                 }
             }
         }

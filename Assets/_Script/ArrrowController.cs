@@ -30,8 +30,6 @@ public class ArrrowController : MonoBehaviour
 
     private Vector2Int CalculateBodyPart(Vector2Int head, ArrowDirection dir, int index)
     {
-        // Nếu index = 0, trả về chính nó (đầu mũi tên)
-        // Nếu index > 0, tính toán các ô phía sau đuôi
         switch (dir)
         {
             case ArrowDirection.Up: return new Vector2Int(head.x, head.y - index);
