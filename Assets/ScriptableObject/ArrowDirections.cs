@@ -9,5 +9,5 @@ public class ArrowDirections : ScriptableObject
         Down,
         Left,
         Right
-    }
+    } 
 }
