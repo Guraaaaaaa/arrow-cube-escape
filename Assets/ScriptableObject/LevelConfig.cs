@@ -6,7 +6,7 @@ public class LevelConfig : ScriptableObject
 {
   public int levelID;
   public int gridSize = 6;
-  public List<FaceData> faces;
+  public List<FaceData> faces; 
 
 }
 [System.Serializable]
