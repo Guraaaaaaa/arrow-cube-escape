@@ -2,30 +2,23 @@ using UnityEngine;
 
 public class Inputmanganer : MonoBehaviour
 {
-    private Vector2 FingerDownPos;
-    private float TapThreshold = 10f; // Adjust this value to set the maximum distance for a tap
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
-     if(Input.GetMouseButtonDown(0))
-        {
-            FingerDownPos = Input.mousePosition;
-        }
+        // Chỉ xử lý tap khi người dùng nhả chuột và KHÔNG phải là đang drag khối cube
         if(Input.GetMouseButtonUp(0))
         {
-            Vector2 FingerUpPos = Input.mousePosition;
-            if(Vector2.Distance(FingerDownPos, FingerUpPos) < TapThreshold)
+            if(!CubeControler.WasDraggingThisClick)
             {
                 CheckSelectArrow();
             }
         }
     }
+    
     void CheckSelectArrow()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -36,7 +29,6 @@ public class Inputmanganer : MonoBehaviour
                 ArrrowController arrow = hit.collider.GetComponent<ArrrowController>();
                 if(arrow != null)
                 {
-                    
                     Debug.Log("Arrow selected: " + arrow.direction);
                 }
             }

@@ -1,13 +1,15 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class GridFaceManager :  MonoBehaviour
 {
+    public int gridSize = 5;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public ArrrowController[,] grid = new ArrrowController[5, 5];
+    public ArrrowController[,] grid;
 
     public void InitializeGrid()
     {
+        grid = new ArrrowController[gridSize, gridSize];
         // Lấy tất cả mũi tên con của mặt này
         ArrrowController[] arrowsOnFace = GetComponentsInChildren<ArrrowController>();
 
@@ -16,7 +18,7 @@ public class GridFaceManager :  MonoBehaviour
             arrow.SetupLogic();
             foreach (var cellPos in arrow.occupiedCells)
             {
-                // Kiểm tra nếu ô nằm trong phạm vi 5x5
+                // Kiểm tra nếu ô nằm trong phạm vi
                 if (IsInsideGrid(cellPos))
                 {
                     grid[cellPos.x, cellPos.y] = arrow;
@@ -25,5 +27,5 @@ public class GridFaceManager :  MonoBehaviour
         }
     }
 
-    bool IsInsideGrid(Vector2Int pos) => pos.x >= 0 && pos.x < 5 && pos.y >= 0 && pos.y < 5;
+    bool IsInsideGrid(Vector2Int pos) => pos.x >= 0 && pos.x < gridSize && pos.y >= 0 && pos.y < gridSize;
 }

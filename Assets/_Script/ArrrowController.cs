@@ -21,7 +21,7 @@ public class ArrrowController : MonoBehaviour
     public void SetupLogic()
     {
         occupiedCells.Clear();
-            for(int i = 0; i < lenght; i++ )
+            for(int i = 0; i < lenght; i++ ) 
         {
             Vector2Int BodyPartPos = CalculateBodyPart(Gridposition, direction, i);
             occupiedCells.Add(BodyPartPos);
